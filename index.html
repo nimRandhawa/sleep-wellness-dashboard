@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sleep Aura — ePortfolio | Nimrat Randhawa</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --indigo: #4338ca;
+    --indigo-light: #818cf8;
+    --indigo-pale: #e0e7ff;
+    --mint: #2dd4bf;
+    --mint-light: #99f6e4;
+    --amber: #f59e0b;
+    --rose: #fb7185;
+    --bg: #0b0f1e;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: rgba(129,140,248,0.15);
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Sora', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(11,15,30,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 58px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--indigo-pale);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--indigo-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% -5%, #312e81 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 80% 90%, #0d9488 0%, transparent 60%),
+      var(--bg);
+    z-index: 0;
+  }
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0.15; }
+    50% { opacity: 0.7; }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--indigo-light);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    background: linear-gradient(135deg, #a5b4fc, #2dd4bf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .chip {
+    padding: 5px 14px;
+    border-radius: 99px;
+    border: 0.5px solid var(--border);
+    background: rgba(129,140,248,0.08);
+    font-size: 12px;
+    color: var(--indigo-light);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 0; }
+  .container { max-width: 980px; margin: 0 auto; padding: 0 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--indigo-light);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    color: #f1f5f9;
+    margin-bottom: 1.5rem;
+  }
+  .divider {
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, var(--indigo-light), var(--mint));
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .about-avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4338ca, #2dd4bf);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+  }
+  .about-text p { color: #94a3b8; margin-bottom: 1rem; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-card .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--indigo-light);
+    display: block;
+  }
+  .stat-card .stat-lbl {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── PROJECT OVERVIEW ── */
+  .overview-section { background: var(--surface); }
+  .overview-inner { padding: 5rem 0; }
+  .problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .ps-card {
+    border-radius: 18px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .ps-card.problem {
+    background: rgba(251,113,133,0.06);
+    border: 0.5px solid rgba(251,113,133,0.2);
+  }
+  .ps-card.solution {
+    background: rgba(45,212,191,0.06);
+    border: 0.5px solid rgba(45,212,191,0.2);
+  }
+  .ps-card h3 {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .ps-card.problem h3 { color: var(--rose); }
+  .ps-card.solution h3 { color: var(--mint); }
+  .ps-card p { color: #94a3b8; font-size: 14px; }
+
+  /* ── SDG BADGES ── */
+  .sdg-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .sdg-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    flex: 1;
+    min-width: 220px;
+  }
+  .sdg-num {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .sdg-num.three { background: rgba(45,212,191,0.15); color: var(--mint); }
+  .sdg-num.four  { background: rgba(129,140,248,0.15); color: var(--indigo-light); }
+  .sdg-text { font-size: 13px; color: #94a3b8; }
+  .sdg-text strong { color: var(--text); display: block; font-size: 12px; }
+
+  /* ── PROCESS TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-top: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 12px; bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--indigo-light), var(--mint));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--indigo-light);
+    transition: border-color 0.3s;
+  }
+  .tl-item:nth-child(4) .tl-dot { border-color: var(--mint); }
+  .tl-phase {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--indigo-light);
+    margin-bottom: 4px;
+  }
+  .tl-item:nth-child(4) .tl-phase { color: var(--mint); }
+  .tl-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .tl-desc { font-size: 14px; color: #94a3b8; }
+
+  /* ── TECH STACK ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .tech-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1rem;
+    text-align: center;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .tech-card:hover {
+    border-color: rgba(129,140,248,0.4);
+    transform: translateY(-3px);
+  }
+  .tech-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    margin: 0 auto 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+  .tech-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .tech-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── ALGORITHM ── */
+  .algo-section { background: var(--surface); }
+  .algo-inner { padding: 5rem 0; }
+  .score-formula {
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: 18px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  .formula-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(129,140,248,0.1);
+  }
+  .formula-row:last-child { border-bottom: none; }
+  .formula-component {
+    flex: 1;
+    font-size: 14px;
+    color: #94a3b8;
+  }
+  .formula-weight {
+    padding: 4px 14px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .w-blue   { background: rgba(129,140,248,0.15); color: var(--indigo-light); }
+  .w-green  { background: rgba(45,212,248,0.12);  color: var(--mint); }
+  .w-amber  { background: rgba(245,158,11,0.15);  color: var(--amber); }
+  .w-rose   { background: rgba(251,113,133,0.15); color: var(--rose); }
+
+  /* ── ARTIFACTS ── */
+  .artifacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .artifact-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: border-color 0.25s;
+  }
+  .artifact-card:hover { border-color: rgba(129,140,248,0.38); }
+  .artifact-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .artifact-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .artifact-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .artifact-desc { font-size: 13px; color: #94a3b8; }
+
+  /* ── REFLECTION ── */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .reflect-card {
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+  }
+  .reflect-q {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--indigo-light);
+    margin-bottom: 0.6rem;
+  }
+  .reflect-a { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+
+  /* ── DEMO SHOWCASE ── */
+  .showcase-section { background: var(--surface); }
+  .showcase-inner { padding: 5rem 0; }
+  .score-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .score-ring-wrap { text-align: center; }
+  .score-ring {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(var(--mint) 0% 85%, rgba(129,140,248,0.15) 85%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.8rem;
+    position: relative;
+  }
+  .score-ring::before {
+    content: '';
+    position: absolute;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--surface);
+  }
+  .score-num {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--mint);
+  }
+  .score-lbl { font-size: 12px; color: var(--muted); }
+  .checklist {
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    min-width: 220px;
+  }
+  .checklist h4 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--indigo-light);
+    margin-bottom: 1rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #94a3b8;
+    border-bottom: 0.5px solid rgba(129,140,248,0.08);
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(45,212,191,0.15);
+    border: 1.5px solid var(--mint);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-dot::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+
+  /* ── FUTURE & CONCLUSION ── */
+  .future-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .future-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.6rem;
+    text-align: center;
+    transition: border-color 0.25s;
+  }
+  .future-card:hover { border-color: rgba(45,212,191,0.4); }
+  .future-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+  .future-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .future-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ── REFERENCES ── */
+  .ref-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.8rem;
+  }
+  .ref-list li {
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .ref-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--indigo-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 0.5px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer span { color: var(--indigo-light); }
+
+  /* ── UTILITIES ── */
+  .highlight { color: var(--indigo-light); }
+  .mint { color: var(--mint); }
+  .prose { color: #94a3b8; margin-bottom: 1rem; }
+
+  @media (max-width: 680px) {
+    .about-grid, .problem-solution, .reflection-grid, .future-grid { grid-template-columns: 1fr; }
+    .future-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .score-demo { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Sleep Aura</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#overview">Project</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#artifacts">Artifacts</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+    <li><a href="#future">Future</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">C4 1.0 Passion Project · Winter 2025–26 · Nimrat Randhawa</p>
+    <h1 class="hero-title">Sleep <em>Aura</em></h1>
+    <p class="hero-sub">A student wellness dashboard for smarter sleep at York University — because better nights lead to better grades.</p>
+    <div class="hero-chips">
+      <span class="chip">Python · Streamlit</span>
+      <span class="chip">SQLite · Plotly</span>
+      <span class="chip">AI-Powered Insights</span>
+      <span class="chip">SDG 3 &amp; 4</span>
+      <span class="chip">Open Source</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="about-avatar">NR</div>
+        <p class="section-label">Introduction</p>
+        <h2 class="section-title">About <em style="font-family:var(--font-display);font-style:italic;">Me</em></h2>
+        <div class="divider"></div>
+        <p class="prose">Hi, I'm Nimrat Randhawa — a Lassonde School of Engineering student at York University with a passion for building tools that genuinely improve people's lives.</p>
+        <p class="prose">I'm fascinated by the intersection of data science, behavioral health, and accessible technology. This project gave me the chance to combine all three, creating something that speaks directly to challenges I and my peers face every day.</p>
+        <p class="prose">I chose Sleep Aura because I watched classmates struggle through 8 AM lectures on 5 hours of sleep, with no real understanding of why their habits weren't working. I wanted to build the tool I wished existed — free, student-focused, and genuinely explanatory.</p>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num highlight">60%+</span>
+            <span class="stat-lbl">of students report poor sleep as their top academic barrier</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num mint">4</span>
+            <span class="stat-lbl">development phases completed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num highlight">0–100</span>
+            <span class="stat-lbl">Aura Score algorithm</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num mint">Free</span>
+            <span class="stat-lbl">open-source for all students</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT OVERVIEW -->
+<section class="overview-section" id="overview">
+  <div class="container overview-inner">
+    <p class="section-label">Project Overview</p>
+    <h2 class="section-title">The Problem &amp; The Solution</h2>
+    <div class="divider"></div>
+
+    <p class="prose">Sleep Aura is a personalized wellness dashboard designed to help university students understand their sleep patterns through data — not just log them. It uses a weighted scoring algorithm, interactive visualizations, and optional AI-driven coaching to bridge the gap between tracking and actual behavioral change.</p>
+
+    <div class="problem-solution">
+      <div class="ps-card problem">
+        <h3>The Problem</h3>
+        <p>Over 60% of university students identify poor sleep as their primary barrier to academic success. Existing sleep apps are built for the general public — they don't account for the unique university lifestyle: late nights, early classes, and exam-related stress spikes.</p>
+      </div>
+      <div class="ps-card solution">
+        <h3>Our Solution</h3>
+        <p>A centralized dashboard for students to log sleep, mood, caffeine, and energy levels. Sleep Aura uses data visualization and AI-driven insights to explain <em>why</em> sleep quality fluctuates — and provides actionable recommendations, not just numbers.</p>
+      </div>
+    </div>
+
+    <div class="sdg-row">
+      <div class="sdg-badge">
+        <div class="sdg-num three">3</div>
+        <div class="sdg-text">
+          <strong>SDG 3 — Good Health &amp; Well-Being</strong>
+          Empowering students to make informed lifestyle choices
+        </div>
+      </div>
+      <div class="sdg-badge">
+        <div class="sdg-num four">4</div>
+        <div class="sdg-text">
+          <strong>SDG 4 — Quality Education</strong>
+          Reducing sleep-related barriers to academic performance
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <p class="section-label">Process Documentation</p>
+    <h2 class="section-title">How It Was Built</h2>
+    <div class="divider"></div>
+    <p class="prose">From initial research to a working open-source tool — here's how Sleep Aura evolved across four phases.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 1 · Validation</div>
+        <div class="tl-title">Identifying the Real Gap</div>
+        <p class="tl-desc">Researched existing wellness apps and surveyed the student sleep landscape. Identified "Academic Crunch" — exam stress, assignment deadlines, and irregular schedules — as the critical missing variable in all existing health tracking tools. Existing apps had no concept of a student's calendar.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 2 · Modeling</div>
+        <div class="tl-title">Engineering the Aura Algorithm</div>
+        <p class="tl-desc">Designed the core scoring formula: a weighted 0–100 system incorporating sleep duration (optimal 7–9h window), caffeine intake penalties, screen time deductions, and mood/energy bonuses. The goal was to quantify qualitative data into a single actionable "readiness" number students could understand at a glance.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 3 · Development</div>
+        <div class="tl-title">Building the Dashboard</div>
+        <p class="tl-desc">Built using Python and Streamlit with a "Low-Friction" design philosophy — the entire logging experience is under 30 seconds. Integrated Plotly for interactive visualizations (trend charts, heatmaps, correlation scatterplots, bedtime timelines) and a SQLite backend for persistent local storage. Added an optional Anthropic API-powered AI Coach tab.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Phase 4 · Legacy</div>
+        <div class="tl-title">Open-Sourcing for the Future</div>
+        <p class="tl-desc">Structured the codebase for community contribution and hosted it as an open-source repository, ensuring Sleep Aura remains a living tool. Any student or developer at York University and beyond can clone, customize, and improve the dashboard — removing financial barriers to wellness technology.</p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:3rem;">Technology Stack</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(129,140,248,0.12);">🐍</div>
+        <div class="tech-name">Python</div>
+        <div class="tech-role">Core language</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(45,212,191,0.12);">⚡</div>
+        <div class="tech-name">Streamlit</div>
+        <div class="tech-role">Web interface</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(245,158,11,0.12);">📊</div>
+        <div class="tech-name">Plotly</div>
+        <div class="tech-role">Data visualization</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(129,140,248,0.12);">🗄️</div>
+        <div class="tech-name">SQLite</div>
+        <div class="tech-role">Data persistence</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(251,113,133,0.12);">🤖</div>
+        <div class="tech-name">Anthropic API</div>
+        <div class="tech-role">AI coaching</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon" style="background:rgba(45,212,191,0.12);">📦</div>
+        <div class="tech-name">Pandas</div>
+        <div class="tech-role">Data analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALGORITHM SHOWCASE -->
+<section class="algo-section" id="algorithm">
+  <div class="container algo-inner">
+    <p class="section-label">Technical Deep Dive</p>
+    <h2 class="section-title">The Aura Score Algorithm</h2>
+    <div class="divider"></div>
+    <p class="prose">The heart of Sleep Aura is a weighted 0–100 scoring system that translates multiple behavioral inputs into a single "readiness" score — making complex data immediately understandable.</p>
+
+    <div class="score-formula">
+      <div class="formula-row">
+        <div class="formula-component"><strong style="color:var(--text);">Sleep Duration</strong><br>Optimal 7–9h window. Bell-curve peak at 8h with penalties for under/oversleeping.</div>
+        <span class="formula-weight w-blue">Up to 60 pts</span>
+      </div>
+      <div class="formula-row">
+        <div class="formula-component"><strong style="color:var(--text);">Caffeine Penalty</strong><br>0 cups = full score; each cup above 0 reduces score. Max penalty at 8 cups.</div>
+        <span class="formula-weight w-amber">Up to 20 pts</span>
+      </div>
+      <div class="formula-row">
+        <div class="formula-component"><strong style="color:var(--text);">Screen Time Penalty</strong><br>Each hour of screen time before bed reduces score. Max penalty at 8h.</div>
+        <span class="formula-weight w-rose">Up to 20 pts</span>
+      </div>
+      <div class="formula-row">
+        <div class="formula-component"><strong style="color:var(--text);">Mood &amp; Energy Bonus</strong><br>Rated 1–5 each morning. Positive ratings add up to +5 pts; negative reduce.</div>
+        <span class="formula-weight w-green">±10 pts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIFACTS -->
+<section id="artifacts">
+  <div class="container">
+    <p class="section-label">Project Artifacts</p>
+    <h2 class="section-title">Evidence of Work</h2>
+    <div class="divider"></div>
+    <p class="prose">The deliverables produced throughout the project lifecycle — from initial ideation through to a functional, open-source application.</p>
+
+    <div class="artifacts-grid">
+      <div class="artifact-card">
+        <span class="artifact-icon">🖥️</span>
+        <div class="artifact-label">Application</div>
+        <div class="artifact-title">Sleep Aura Dashboard (app.py)</div>
+        <p class="artifact-desc">Fully functional Streamlit web application with four tabs: Dashboard, Sleep Log, Trends &amp; Analysis, and AI Coach. Includes real-time score calculation, interactive charts, and data export.</p>
+      </div>
+      <div class="artifact-card">
+        <span class="artifact-icon">🗃️</span>
+        <div class="artifact-label">Data</div>
+        <div class="artifact-title">SQLite Database + Sample CSV</div>
+        <p class="artifact-desc">Persistent local database storing all sleep logs, plus a seed CSV with sample data entries for demonstration and testing of the dashboard's visualization features.</p>
+      </div>
+      <div class="artifact-card">
+        <span class="artifact-icon">🪧</span>
+        <div class="artifact-label">Capstone Poster</div>
+        <div class="artifact-title">Project Poster</div>
+        <p class="artifact-desc">Visual poster summarizing the problem, solution, technical implementation, milestones, and project legacy — created for the C4 Capstone Day presentation.</p>
+      </div>
+      <div class="artifact-card">
+        <span class="artifact-icon">🎤</span>
+        <div class="artifact-label">Communication</div>
+        <div class="artifact-title">Elevator Pitch</div>
+        <p class="artifact-desc">A concise 90-second pitch for Sleep Aura covering the student sleep problem, unique value proposition, and open-source legacy vision.</p>
+      </div>
+      <div class="artifact-card">
+        <span class="artifact-icon">📋</span>
+        <div class="artifact-label">Documentation</div>
+        <div class="artifact-title">Professional Project Title &amp; Description</div>
+        <p class="artifact-desc">Formal project title and summary prepared for the C4 portfolio submission, describing the dashboard's purpose, scope, and societal relevance.</p>
+      </div>
+      <div class="artifact-card">
+        <span class="artifact-icon">📈</span>
+        <div class="artifact-label">Analysis</div>
+        <div class="artifact-title">Algorithm Design Document</div>
+        <p class="artifact-desc">Detailed breakdown of the Aura Score formula — the weighted components, behavioral penalties, recovery bonuses, and score labeling (Excellent / Good / Fair / Poor).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD SHOWCASE -->
+<section class="showcase-section" id="showcase">
+  <div class="container showcase-inner">
+    <p class="section-label">Final Product · Showcase</p>
+    <h2 class="section-title">Sleep Aura in Action</h2>
+    <div class="divider"></div>
+    <p class="prose">The completed dashboard gives students an at-a-glance readiness score, a 30-day sleep trend, a bedtime timeline, habit correlation charts, and personalized AI coaching — all from a 30-second nightly log.</p>
+
+    <div class="score-demo">
+      <div class="score-ring-wrap">
+        <div class="score-ring"><span class="score-num">85</span></div>
+        <div class="score-lbl">Excellent · Last Night</div>
+      </div>
+      <div class="checklist">
+        <h4>Tonight's Quick Wins</h4>
+        <div class="check-item"><div class="check-dot"></div>No caffeine after 2 PM</div>
+        <div class="check-item"><div class="check-dot"></div>Screens off 30 min before bed</div>
+        <div class="check-item"><div class="check-dot"></div>Consistent wake time (even weekends)</div>
+        <div class="check-item"><div class="check-dot"></div>Room temperature 16–18°C</div>
+        <div class="check-item"><div class="check-dot"></div>Log your sleep tonight</div>
+      </div>
+      <div class="checklist">
+        <h4>Dashboard Features</h4>
+        <div class="check-item"><div class="check-dot"></div>Readiness score ring (0–100)</div>
+        <div class="check-item"><div class="check-dot"></div>30-day sleep duration trend</div>
+        <div class="check-item"><div class="check-dot"></div>Bedtime timeline visualization</div>
+        <div class="check-item"><div class="check-dot"></div>Habit correlation scatterplots</div>
+        <div class="check-item"><div class="check-dot"></div>AI Coach (Anthropic API)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="container">
+    <p class="section-label">Reflection &amp; Critical Thinking</p>
+    <h2 class="section-title">What I Learned</h2>
+    <div class="divider"></div>
+
+    <div class="reflection-grid">
+      <div class="reflect-card">
+        <div class="reflect-q">What I learned about the topic</div>
+        <p class="reflect-a">Sleep science is deeply nuanced. I initially assumed duration was the only metric that mattered — but building the algorithm taught me that the interplay of caffeine timing, screen exposure, and emotional state can matter as much as hours logged. Data without context is just noise.</p>
+      </div>
+      <div class="reflect-card">
+        <div class="reflect-q">What I learned about myself as a learner</div>
+        <p class="reflect-a">I work best when the problem feels personal. Knowing that the tool I was building could help friends and classmates — not just a hypothetical user — kept me motivated through the harder debugging sessions. I'm a problem-solver who needs a "why."</p>
+      </div>
+      <div class="reflect-card">
+        <div class="reflect-q">Key insights &amp; "aha" moments</div>
+        <p class="reflect-a">The biggest shift was realizing that the hardest part of wellness tech isn't the technology — it's the logging habit. This led to my "30-second design philosophy": every interaction must be fast enough that a tired student will actually do it before bed. That constraint made every design decision sharper.</p>
+      </div>
+      <div class="reflect-card">
+        <div class="reflect-q">Challenges &amp; how I handled them</div>
+        <p class="reflect-a">Displaying overnight sleep windows on a linear timeline was surprisingly tricky — a 11 PM bedtime and 7 AM wake need to "wrap" across midnight. I solved this by normalizing all times to a shifted 6 PM–noon (next day) window, treating pre-midnight hours as hours 18–24 and post-midnight as hours 24–36.</p>
+      </div>
+      <div class="reflect-card">
+        <div class="reflect-q">How my thinking changed</div>
+        <p class="reflect-a">I started this project thinking I was building a tracker. I ended it realizing I had built a behavior-change tool. The difference is that a tracker shows you data; a behavior-change tool shows you data in a way that makes you want to act differently. That framing shift changed everything about how I designed the insights.</p>
+      </div>
+      <div class="reflect-card">
+        <div class="reflect-q">What I'd do differently next time</div>
+        <p class="reflect-a">I'd conduct user testing with real students earlier in the process — even just five people doing one logging session would have revealed friction points I only discovered late. I'd also add push notifications or a browser reminder system to support the logging habit from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE -->
+<section id="future">
+  <div class="container">
+    <p class="section-label">Conclusion &amp; Future Directions</p>
+    <h2 class="section-title">What Comes Next</h2>
+    <div class="divider"></div>
+
+    <p class="prose">Sleep Aura was designed to outlast this course. Its open-source architecture and modular design make it a living platform — not a one-term project.</p>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <span class="future-icon">🔓</span>
+        <div class="future-title">Open-Source Access</div>
+        <p class="future-desc">Any student or developer can clone, customize, and improve the dashboard — democratizing wellness technology beyond premium subscriptions.</p>
+      </div>
+      <div class="future-card">
+        <span class="future-icon">🏫</span>
+        <div class="future-title">Campus Integration</div>
+        <p class="future-desc">Future integration with student health portals or academic calendars could reveal correlations between exam schedules and sleep quality at scale.</p>
+      </div>
+      <div class="future-card">
+        <span class="future-icon">📱</span>
+        <div class="future-title">Mobile Companion</div>
+        <p class="future-desc">A lightweight mobile app for faster logging and push reminders would dramatically improve the consistency of data collection.</p>
+      </div>
+      <div class="future-card">
+        <span class="future-icon">🧠</span>
+        <div class="future-title">Deeper AI Insights</div>
+        <p class="future-desc">Expanding the AI Coach to detect multi-week patterns — like pre-exam sleep deterioration — and provide proactive, calendar-aware recommendations.</p>
+      </div>
+      <div class="future-card">
+        <span class="future-icon">📊</span>
+        <div class="future-title">Research Partnership</div>
+        <p class="future-desc">Aggregated (anonymized) data could become a genuine academic dataset on university student sleep — contributing to research on academic wellness.</p>
+      </div>
+      <div class="future-card">
+        <span class="future-icon">🌍</span>
+        <div class="future-title">Any University</div>
+        <p class="future-desc">The "student-first" philosophy scales globally. Better sleep, better health, better grades — available to every student, everywhere, for free.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;padding:2rem;background:var(--surface);border:0.5px solid var(--border);border-radius:18px;text-align:center;">
+      <p style="font-family:var(--font-display);font-size:1.4rem;color:#f1f5f9;margin-bottom:0.5rem;">Career Connection</p>
+      <p style="color:#94a3b8;max-width:600px;margin:0 auto;">This project deepened my interest in health informatics and human-centered software design. I plan to continue exploring how data engineering and accessible UI can solve real student problems — building toward a career at the intersection of technology and community impact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section style="padding:3rem 0 4rem;">
+  <div class="container">
+    <p class="section-label">References &amp; Credits</p>
+    <h2 class="section-title" style="font-size:1.5rem;">Sources &amp; Acknowledgements</h2>
+    <div class="divider"></div>
+    <ul class="ref-list">
+      <li>American Academy of Sleep Medicine (AASM) — sleep duration recommendations for adults (7–9 hours).</li>
+      <li>Anthropic — Claude API used for the AI Coach feature (claude-haiku-4-5 model).</li>
+      <li>Streamlit Inc. — open-source Python framework for building the web interface.</li>
+      <li>Plotly Technologies — interactive visualization library used throughout the dashboard.</li>
+      <li>University of Waterloo Centre for Teaching Excellence — ePortfolio definition and framework guidance.</li>
+      <li>C4: Cross-Campus Capstone Classroom, York University — project guidance, mentorship, and course structure.</li>
+      <li>Lassonde School of Engineering, York University — institutional support and resources.</li>
+      <li>Google Fonts — Sora and DM Serif Display typefaces used in this portfolio.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Sleep Aura ePortfolio · <span>Nimrat Randhawa</span> · C4 1.0 Passion Project · Winter 2025–26</p>
+  <p style="margin-top:0.4rem;">Lassonde School of Engineering · York University · Due April 20, 2026</p>
+</footer>
+
+<script>
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 90; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --dur:${(Math.random()*3+2).toFixed(1)}s;
+      --delay:${(Math.random()*4).toFixed(1)}s;
+    `;
+    container.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
